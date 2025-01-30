@@ -137,7 +137,7 @@ input[type="number"]::-webkit-inner-spin-button {
     left: 50%;
     transform: translateX(-50%);
     position: relative;
-    top: 5%;
+    top: 10%;
     justify-content: center;
     column-gap: 100px;
     row-gap: 110px;
@@ -163,6 +163,7 @@ input[type="number"]::-webkit-inner-spin-button {
     flex-wrap: wrap;
     aspect-ratio: 1;
     gap: 5%;
+
     z-index: 2;
 }
 
@@ -176,6 +177,8 @@ input[type="number"]::-webkit-inner-spin-button {
     border-radius: 10px;
     user-select: none;
 }
+
+
 
 .box img{
     width: 70%;
@@ -242,7 +245,6 @@ img {
 
 #moneyborder{
     border-radius: 10px;
-    width: 14%;
     height: 70px;
     background-color: #20274b;
     position: absolute;
@@ -257,6 +259,9 @@ img {
 #money{
     font-size: 120%;
     color: #7b7d8a; 
+    padding-left: 0%;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 #multiplierdisplay{
@@ -272,6 +277,17 @@ img {
 @media screen and (width< 1558px) {
     #moneyborder{
         top: 520px;
+    }
+    .box{
+        border-radius: 6px;
+    }
+    #bombcontainer{
+        max-width: 78%;
+        max-height: 78%;
+    }
+    #imgcontainer{
+        max-width: 78%;
+        max-height: 78%;
     }
 } 
 
