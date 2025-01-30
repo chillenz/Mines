@@ -240,7 +240,7 @@ function start(){
         inGame = false;
         boxClicked = 0;
         balanceamount += parseFloat(earningamount.value);
-        balance.innerText = `Balance: ${balanceamount}$`;
+        balance.innerText = `Balance: ${parseFloat(balanceamount.toFixed(2))}$`;
         multiplierdisplay.textContent = 'Total earnings 0.00x';
     }
 }
@@ -312,8 +312,10 @@ function click(clicked, bomb, clickedbox){
                         console.log('error');
                     }
 
-                    multiplierdisplay.textContent = `Total earnings ${parseFloat(multiplier.toFixed(3))}x`;
-                    earningamount.value = betamount*parseFloat(multiplier.toFixed(3));
+                    multiplier = parseFloat(multiplier.toFixed(2))
+                    multiplierdisplay.textContent = `Total earnings ${multiplier}x`;
+                    earningamount.value = betamount*multiplier;
+                    earningamount.value = parseFloat(parseFloat(earningamount.value).toFixed(2));
 
                     //math end
                 } else if(boxbombstatus[bomb]===true){
