@@ -527,29 +527,33 @@ for(let c=0; c<5; c++){
 
 
 function betbuttonclick(mult){
-    if (mult==='max'){
-        betamount = balanceamount;
-        document.querySelector('#betamount input').value = parseFloat(balanceamount.toFixed(2));
-        document.body.style.backgroundColor = 'red';
-    } else{
-        betamount *= mult;
-        if (betamount>balanceamount){
+    if (inGame===false){
+        if (mult==='max'){
             betamount = balanceamount;
             document.querySelector('#betamount input').value = parseFloat(balanceamount.toFixed(2));
-        } else {
-            document.querySelector('#betamount input').value = parseFloat(betamount.toFixed(2));
-            document.body.style.backgroundColor = 'blue';
+            document.body.style.backgroundColor = 'red';
+        } else{
+            betamount *= mult;
+            if (betamount>balanceamount){
+                betamount = balanceamount;
+                document.querySelector('#betamount input').value = parseFloat(balanceamount.toFixed(2));
+            } else {
+                document.querySelector('#betamount input').value = parseFloat(betamount.toFixed(2));
+                document.body.style.backgroundColor = 'blue';
+            }
         }
     }
 }
-
+    
 half.addEventListener('click', () => betbuttonclick(1/2));
 double.addEventListener('click', () => betbuttonclick(2));
 max.addEventListener('click', () => betbuttonclick('max'));
 
 function minebuttonclick(min){
-    minesamount = min;
-    document.querySelector('#mines input').value = min;
+    if (inGame===false){
+        minesamount = min;
+        document.querySelector('#mines input').value = min;
+    }
 }
 
 onebombbtn.addEventListener('click', () => minebuttonclick(1));
