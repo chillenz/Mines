@@ -27,31 +27,33 @@ const box22 = document.getElementById('box22');
 const box23 = document.getElementById('box23');
 const box24 = document.getElementById('box24');
 const box25 = document.getElementById('box25');
-let box1clicked = false;
-let box2clicked = false;
-let box3clicked = false;
-let box4clicked = false;
-let box5clicked = false;
-let box6clicked = false;
-let box7clicked = false;
-let box8clicked = false;
-let box9clicked = false;
-let box10clicked = false;
-let box11clicked = false;
-let box12clicked = false;
-let box13clicked = false;
-let box14clicked = false;
-let box15clicked = false;
-let box16clicked = false;
-let box17clicked = false;
-let box18clicked = false;
-let box19clicked = false;
-let box20clicked = false;
-let box21clicked = false;
-let box22clicked = false;
-let box23clicked = false;
-let box24clicked = false;
-let box25clicked = false;
+let boxclickstatus ={
+    box1clicked : false,
+    box2clicked : false,
+    box3clicked : false,
+    box4clicked : false,
+    box5clicked : false,
+    box6clicked : false,
+    box7clicked : false,
+    box8clicked : false,
+    box9clicked : false,
+    box10clicked : false,
+    box11clicked : false,
+    box12clicked : false,
+    box13clicked : false,
+    box14clicked : false,
+    box15clicked : false,
+    box16clicked : false,
+    box17clicked : false,
+    box18clicked : false,
+    box19clicked : false,
+    box20clicked : false,
+    box21clicked : false,
+    box22clicked : false,
+    box23clicked : false,
+    box24clicked : false,
+    box25clicked : false
+}
 let boxbombstatus ={
     box1bomb : false,    
     box2bomb : false,     
@@ -140,6 +142,15 @@ let alive = true;
 const vineboom = document.getElementById('vineboom');
 let multiplier = 0;
 let balanceamount = 100;
+const half = document.getElementById('half');
+const double = document.getElementById('double');
+const max = document.getElementById('max');
+const onebombbtn = document.getElementById('onebomb')
+const threebombbtn = document.getElementById('threebomb')
+const fivebombbtn = document.getElementById('fivebomb')
+const tenbombbtn = document.getElementById('tenbomb')
+const fifteenbombbtn = document.getElementById('fifteenbomb')
+const twentybombbtn = document.getElementById('twentybomb')
 
 
 function start(){
@@ -149,81 +160,113 @@ function start(){
     betamount = parseInt(document.querySelector('#betamount input').value);
     balance = document.getElementById('money');
     if (inGame===false){
-        if (betamount>balanceamount){
-            betamount = balanceamount;
-            document.querySelector('#betamount input').value = balanceamount;
-        } else if (betamount<0){
-            betamount = 1;
-            document.querySelector('#betamount input').value = 1;
-        }
-        balanceamount -= betamount;
-        balance.innerText = `Balance: ${balanceamount}$`;
-        alive=true;
-        multiplier = 0;
-        earningamount.value = 0;
-        boxbombstatus ={
-            box1bomb : false,    
-            box2bomb : false,     
-            box3bomb : false,     
-            box4bomb : false,     
-            box5bomb : false,     
-            box6bomb : false,     
-            box7bomb : false,     
-            box8bomb : false,     
-            box9bomb : false,     
-            box10bomb : false,     
-            box11bomb : false,     
-            box12bomb : false,     
-            box13bomb : false,     
-            box14bomb : false,     
-            box15bomb : false,     
-            box16bomb : false,     
-            box17bomb : false,     
-            box18bomb : false,     
-            box19bomb : false,     
-            box20bomb : false,     
-            box21bomb : false,     
-            box22bomb : false,     
-            box23bomb : false,     
-            box24bomb : false,     
-            box25bomb : false,
-        }
-        /* mine amount check */
-        if (minesamount>24){
-            minesamount = 24;
-            document.querySelector('#mines input').value = 24;
-        } else if (minesamount<1){
-            minesamount = 1;
-            document.querySelector('#mines input').value = 1;
-        }
+        if (balanceamount!=0){
+            if (betamount>balanceamount){
+                betamount = balanceamount;
+                document.querySelector('#betamount input').value = parseFloat(balanceamount.toFixed(2));
+            } else if (betamount<0){
+                betamount = 1;
+                document.querySelector('#betamount input').value = 1;
+            }
+            balanceamount -= betamount;
+            balance.innerText = `Balance: ${parseFloat(balanceamount.toFixed(2))}$`;
+            alive=true;
+            multiplier = 0;
+            earningamount.value = 0;
+            boxclickstatus ={
+                box1clicked : false,
+                box2clicked : false,
+                box3clicked : false,
+                box4clicked : false,
+                box5clicked : false,
+                box6clicked : false,
+                box7clicked : false,
+                box8clicked : false,
+                box9clicked : false,
+                box10clicked : false,
+                box11clicked : false,
+                box12clicked : false,
+                box13clicked : false,
+                box14clicked : false,
+                box15clicked : false,
+                box16clicked : false,
+                box17clicked : false,
+                box18clicked : false,
+                box19clicked : false,
+                box20clicked : false,
+                box21clicked : false,
+                box22clicked : false,
+                box23clicked : false,
+                box24clicked : false,
+                box25clicked : false
+            }
+            boxbombstatus ={
+                box1bomb : false,    
+                box2bomb : false,     
+                box3bomb : false,     
+                box4bomb : false,     
+                box5bomb : false,     
+                box6bomb : false,     
+                box7bomb : false,     
+                box8bomb : false,     
+                box9bomb : false,     
+                box10bomb : false,     
+                box11bomb : false,     
+                box12bomb : false,     
+                box13bomb : false,     
+                box14bomb : false,     
+                box15bomb : false,     
+                box16bomb : false,     
+                box17bomb : false,     
+                box18bomb : false,     
+                box19bomb : false,     
+                box20bomb : false,     
+                box21bomb : false,     
+                box22bomb : false,     
+                box23bomb : false,     
+                box24bomb : false,     
+                box25bomb : false,
+            }
+            /* mine amount check */
+            if (minesamount>24){
+                minesamount = 24;
+                document.querySelector('#mines input').value = 24;
+            } else if (minesamount<1){
+                minesamount = 1;
+                document.querySelector('#mines input').value = 1;
+            }
 
-        /* i spent like 40 mins trying to fix betamount error forgetting i added this shi
-            bet amount check 
-        if (betamount>balanceamount){
-            betamount = balanceamount;
-            document.querySelector('#betamount input').value = balanceamount;
-        } else if (betamount<0){
-            betamount = 1;
-            document.querySelector('#betamount input').value = 1;
-        }
-        */
+            /* i spent like 40 mins trying to fix betamount error forgetting i added this shi
+                bet amount check 
+            if (betamount>balanceamount){
+                betamount = balanceamount;
+                document.querySelector('#betamount input').value = balanceamount;
+            } else if (betamount<0){
+                betamount = 1;
+                document.querySelector('#betamount input').value = 1;
+            }
+            */
 
-        document.querySelectorAll('input').forEach(input => {
-            input.readOnly = true;
-        });
-        startbutton.innerText = 'Cash out';
-        startbutton.style.filter = 'brightness(0.5)';
-        startbutton.classList.remove('placebeteffect');
-        allbox.forEach(box => {
-            box.style.opacity = '1';
-        });
-        for (let key in boximg) {
-            boximg[key].src = 'best.png';
-            boximg[key].style.filter = 'hue-rotate(20deg) brightness(.5)';
-            boximg[key].style.scale = '1';
+            document.querySelectorAll('input').forEach(input => {
+                input.readOnly = true;
+            });
+            startbutton.innerText = 'Cash out';
+            startbutton.style.filter = 'brightness(0.5)';
+            startbutton.classList.remove('placebeteffect');
+            allbox.forEach(box => {
+                box.style.opacity = '1';
+            });
+            for (let key in boximg) {
+                boximg[key].src = 'best.png';
+                boximg[key].style.filter = 'hue-rotate(20deg) brightness(.5)';
+                boximg[key].style.scale = '1';
+            }
+            inGame = true;
+            createbomb();
+        } else{
+            startbutton.style.backgroundColor = 'red';
+            startbutton.innerText = 'You have no money left.'
         }
-        inGame = true;
-        createbomb();
     } else if (inGame===true && boxClicked>0){
         document.querySelectorAll('input').forEach(input => {
             input.readOnly = false;
@@ -250,12 +293,12 @@ startbutton.addEventListener('click', start);
 
 function click(clicked, bomb, clickedbox){
     if (inGame===true){
-        if (clicked===false){
+        if (boxclickstatus[clicked]===false){
             if (alive===true){
                 if (boxbombstatus[bomb]===false){
                     startbutton.style.filter = 'brightness(1)';
                     startbutton.classList.add('placebeteffect');
-                    clicked = true;
+                    boxclickstatus[clicked] = true;
                     boxClicked += 1;
                     clickedbox.style.opacity = '0';
                     // put the math here
@@ -350,104 +393,105 @@ function click(clicked, bomb, clickedbox){
 }
 
 box1.addEventListener('click', () => {
-    click(box1clicked, 'box1bomb', box1);
+    click('box1clicked', 'box1bomb', box1);
 });
 
 box2.addEventListener('click', () => {
-    click(box2clicked, 'box2bomb', box2);
+    click('box2clicked', 'box2bomb', box2);
 });
 
 box3.addEventListener('click', () => {
-    click(box3clicked, 'box3bomb', box3);
+    click('box3clicked', 'box3bomb', box3);
 });
 
 box4.addEventListener('click', () => {
-    click(box4clicked, 'box4bomb', box4);
+    click('box4clicked', 'box4bomb', box4);
 });
 
 box5.addEventListener('click', () => {
-    click(box5clicked, 'box5bomb', box5);
+    click('box5clicked', 'box5bomb', box5);
 });
 
 box6.addEventListener('click', () => {
-    click(box6clicked, 'box6bomb', box6);
+    click('box6clicked', 'box6bomb', box6);
 });
 
 box7.addEventListener('click', () => {
-    click(box7clicked, 'box7bomb', box7);
+    click('box7clicked', 'box7bomb', box7);
 });
 
 box8.addEventListener('click', () => {
-    click(box8clicked, 'box8bomb', box8);
+    click('box8clicked', 'box8bomb', box8);
 });
 
 box9.addEventListener('click', () => {
-    click(box9clicked, 'box9bomb', box9);
+    click('box9clicked', 'box9bomb', box9);
 });
 
 box10.addEventListener('click', () => {
-    click(box10clicked, 'box10bomb', box10);
+    click('box10clicked', 'box10bomb', box10);
 });
 
 box11.addEventListener('click', () => {
-    click(box11clicked, 'box11bomb', box11);
+    click('box11clicked', 'box11bomb', box11);
 });
 
 box12.addEventListener('click', () => {
-    click(box12clicked, 'box12bomb', box12);
+    click('box12clicked', 'box12bomb', box12);
 });
 
 box13.addEventListener('click', () => {
-    click(box13clicked, 'box13bomb', box13);
+    click('box13clicked', 'box13bomb', box13);
 });
 
 box14.addEventListener('click', () => {
-    click(box14clicked, 'box14bomb', box14);
+    click('box14clicked', 'box14bomb', box14);
 });
 
 box15.addEventListener('click', () => {
-    click(box15clicked, 'box15bomb', box15);
+    click('box15clicked', 'box15bomb', box15);
 });
 
 box16.addEventListener('click', () => {
-    click(box16clicked, 'box16bomb', box16);
+    click('box16clicked', 'box16bomb', box16);
 });
 
 box17.addEventListener('click', () => {
-    click(box17clicked, 'box17bomb', box17);
+    click('box17clicked', 'box17bomb', box17);
 });
 
 box18.addEventListener('click', () => {
-    click(box18clicked, 'box18bomb', box18);
+    click('box18clicked', 'box18bomb', box18);
 });
 
 box19.addEventListener('click', () => {
-    click(box19clicked, 'box19bomb', box19);
+    click('box19clicked', 'box19bomb', box19);
 });
 
 box20.addEventListener('click', () => {
-    click(box20clicked, 'box20bomb', box20);
+    click('box20clicked', 'box20bomb', box20);
 });
 
 box21.addEventListener('click', () => {
-    click(box21clicked, 'box21bomb', box21);
+    click('box21clicked', 'box21bomb', box21);
 });
 
 box22.addEventListener('click', () => {
-    click(box22clicked, 'box22bomb', box22);
+    click('box22clicked', 'box22bomb', box22);
 });
 
 box23.addEventListener('click', () => {
-    click(box23clicked, 'box23bomb', box23);
+    click('box23clicked', 'box23bomb', box23);
 });
 
 box24.addEventListener('click', () => {
-    click(box24clicked, 'box24bomb', box24);
+    click('box24clicked', 'box24bomb', box24);
 });
 
 box25.addEventListener('click', () => {
-    click(box25clicked, 'box25bomb', box25);
+    click('box25clicked', 'box25bomb', box25);
 });
+
 
 /* I SPENT 30 MINS TRYING TO FIX THIS FUCKING FUCTION
    I FORGOT I NAMED IT BOMB1 NOT BOX1 */
@@ -480,3 +524,37 @@ function createbomb() {
 for(let c=0; c<5; c++){
   console.log(++c)  
 };
+
+
+function betbuttonclick(mult){
+    if (mult==='max'){
+        betamount = balanceamount;
+        document.querySelector('#betamount input').value = parseFloat(balanceamount.toFixed(2));
+        document.body.style.backgroundColor = 'red';
+    } else{
+        betamount *= mult;
+        if (betamount>balanceamount){
+            betamount = balanceamount;
+            document.querySelector('#betamount input').value = parseFloat(balanceamount.toFixed(2));
+        } else {
+            document.querySelector('#betamount input').value = parseFloat(betamount.toFixed(2));
+            document.body.style.backgroundColor = 'blue';
+        }
+    }
+}
+
+half.addEventListener('click', () => betbuttonclick(1/2));
+double.addEventListener('click', () => betbuttonclick(2));
+max.addEventListener('click', () => betbuttonclick('max'));
+
+function minebuttonclick(min){
+    minesamount = min;
+    document.querySelector('#mines input').value = min;
+}
+
+onebombbtn.addEventListener('click', () => minebuttonclick(1));
+threebombbtn.addEventListener('click', () => minebuttonclick(3));
+fivebombbtn.addEventListener('click', () => minebuttonclick(5));
+tenbombbtn.addEventListener('click', () => minebuttonclick(10));
+fifteenbombbtn.addEventListener('click', () => minebuttonclick(15));
+twentybombbtn.addEventListener('click', () => minebuttonclick(20));
