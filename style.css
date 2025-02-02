@@ -8,6 +8,7 @@ body{
     height: 100vh;
     margin: 0;
     background-color: #1a1e40;
+    overflow-x: hidden;
 }
 
 #menu{
@@ -18,7 +19,7 @@ body{
     justify-content: center;
     flex-wrap: wrap;
     background-color: #20274b;
-    max-width: 80%;
+    max-width: 90%;
 }
 
 #betamount{
@@ -272,6 +273,68 @@ img {
     font-weight: 400;
 }
 
+#betbuttoncontainer{
+    position: absolute;
+    z-index: 4;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 5%;
+    width: 60%;
+    max-width: 200px;
+    display: flex;
+    gap: 5%;
+    flex-direction: row-reverse;
+}
+
+#betbuttoncontainer button{
+    background-color: #39406b;
+    border: none;
+    color: #545f8a;
+    border-radius: 3px;
+    height: 30px;
+    width: 28%;
+    font-size: 120%;
+}
+
+#half{
+    flex-grow: 1;
+}
+
+#max{
+    flex-grow: 1;
+}
+
+#minebuttoncontainer{
+    position: absolute;
+    z-index: 4;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 80%;
+    max-width: 350px;
+    display: flex;
+    gap: 5%;
+    right: 2%;
+}
+
+#minebuttoncontainer button{
+    background-color: #39406b;
+    border: none;
+    color: #545f8a;
+    border-radius: 3px;
+    height: 30px;
+    flex-shrink: 1;
+    flex-grow: 1;
+    font-size: 120%;
+    min-width: none;
+}
+
+#minebuttoncontainer button:hover, #betbuttoncontainer button:hover{
+    filter: brightness(.9);
+}
+#minebuttoncontainer button:active, #betbuttoncontainer button:active{
+    filter: brightness(.8);
+}
+
 
 
 @media screen and (width< 1558px) {
@@ -288,6 +351,13 @@ img {
     #imgcontainer{
         max-width: 78%;
         max-height: 78%;
+    }
+
+    #betbuttoncontainer button{
+        font-size: 15px;
+    }
+    #minebuttoncontainer button{
+        font-size: 15px;
     }
 } 
 
