@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mines Gambling</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="boom.png" type="image/x-icon">
 </head>
 <body>
     <div id="container">
@@ -12,9 +13,22 @@
         <div id="menu">
             <div id="betamount">
                 <input type="number" value="10">
+                <div id="betbuttoncontainer">
+                    <button id="max">max</button>
+                    <button id="double">x2</button>
+                    <button id="half">1/2</button>
+                </div>
             </div>
             <div id="mines">
                 <input type="number" value="3" min="1" max="24">
+                <div id="minebuttoncontainer">
+                    <button id="onebomb">1</button>
+                    <button id="threebomb">3</button>
+                    <button id="fivebomb">5</button>
+                    <button id="tenbomb">10</button>
+                    <button id="fifteenbomb">15</button>
+                    <button id="twentybomb">20</button>
+                </div>
             </div>
             <div id="earnings">
                 <input type="number" value="0" readonly id="earningamount">
