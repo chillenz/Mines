@@ -533,5 +533,6 @@ function opendesc(){
     }
 }
 
+
 closebtn.addEventListener('click', opendesc);
 ask.addEventListener('click', opendesc);
