@@ -488,7 +488,6 @@ function betbuttonclick(mult){
         if (mult==='max'){
             betamount = balanceamount;
             document.querySelector('#betamount input').value = parseFloat(balanceamount.toFixed(2));
-            document.body.style.backgroundColor = 'red';
         } else{
             betamount *= mult;
             if (betamount>balanceamount){
@@ -496,7 +495,6 @@ function betbuttonclick(mult){
                 document.querySelector('#betamount input').value = parseFloat(balanceamount.toFixed(2));
             } else {
                 document.querySelector('#betamount input').value = parseFloat(betamount.toFixed(2));
-                document.body.style.backgroundColor = 'blue';
             }
         }
     }
