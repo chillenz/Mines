@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mines Gambling</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="boom.png" type="image/x-icon">
 </head>
 <body>
     <div id="container">
@@ -12,9 +13,22 @@
         <div id="menu">
             <div id="betamount">
                 <input type="number" value="10">
+                <div id="betbuttoncontainer">
+                    <button id="max">max</button>
+                    <button id="double">x2</button>
+                    <button id="half">1/2</button>
+                </div>
             </div>
             <div id="mines">
                 <input type="number" value="3" min="1" max="24">
+                <div id="minebuttoncontainer">
+                    <button id="onebomb">1</button>
+                    <button id="threebomb">3</button>
+                    <button id="fivebomb">5</button>
+                    <button id="tenbomb">10</button>
+                    <button id="fifteenbomb">15</button>
+                    <button id="twentybomb">20</button>
+                </div>
             </div>
             <div id="earnings">
                 <input type="number" value="0" readonly id="earningamount">
@@ -83,6 +97,14 @@
             </div>
         </div>
     </div>
+    <button id="ask">?</button>
+    <div id="description">
+        <button id="close">X</button>
+        <h1 id="tutorialtitle">Mines tutorial</h1>
+        <h1 id="tutorialtext">In this game, you'll play on a 5x5 grid of boxes. Some of them are mines and the rest are safe. Your goal is to try to click the safe boxes and avoid the mines. The more boxes you click means the more reward you'll get. If you click on the bomb all your betting will be lost.</h1>
+        <img src="minestutorial.png" alt="img not supported" id="tutorialimg">
+    </div>
+    <div id="descriptionbackground"></div>
     <script src="script.js"></script>
 </body>
 </html>

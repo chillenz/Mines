@@ -8,6 +8,7 @@ body{
     height: 100vh;
     margin: 0;
     background-color: #1a1e40;
+    overflow-x: hidden;
 }
 
 #menu{
@@ -18,7 +19,7 @@ body{
     justify-content: center;
     flex-wrap: wrap;
     background-color: #20274b;
-    max-width: 80%;
+    max-width: 90%;
 }
 
 #betamount{
@@ -118,6 +119,7 @@ input[type="number"]::-webkit-inner-spin-button {
     border: none;
     font-size: 120%;
     color: white;
+    transition: filter 0.1s;
 }
 
 
@@ -137,7 +139,7 @@ input[type="number"]::-webkit-inner-spin-button {
     left: 50%;
     transform: translateX(-50%);
     position: relative;
-    top: 5%;
+    top: 10%;
     justify-content: center;
     column-gap: 100px;
     row-gap: 110px;
@@ -163,6 +165,7 @@ input[type="number"]::-webkit-inner-spin-button {
     flex-wrap: wrap;
     aspect-ratio: 1;
     gap: 5%;
+
     z-index: 2;
 }
 
@@ -175,7 +178,10 @@ input[type="number"]::-webkit-inner-spin-button {
     background-color: #1c2149;
     border-radius: 10px;
     user-select: none;
+    cursor: pointer;
 }
+
+
 
 .box img{
     width: 70%;
@@ -242,7 +248,6 @@ img {
 
 #moneyborder{
     border-radius: 10px;
-    width: 14%;
     height: 70px;
     background-color: #20274b;
     position: absolute;
@@ -252,11 +257,15 @@ img {
     justify-content: center;
     z-index: 2;
     min-width: 120px;
+    flex-wrap: nowrap;
 }
 
 #money{
     font-size: 120%;
     color: #7b7d8a; 
+    padding-left: 0%;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 #multiplierdisplay{
@@ -267,11 +276,181 @@ img {
     font-weight: 400;
 }
 
+#betbuttoncontainer{
+    position: absolute;
+    z-index: 4;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 5%;
+    width: 60%;
+    max-width: 200px;
+    display: flex;
+    gap: 5%;
+    flex-direction: row-reverse;
+}
 
+#betbuttoncontainer button{
+    background-color: #39406b;
+    border: none;
+    color: #545f8a;
+    border-radius: 3px;
+    height: 30px;
+    width: 28%;
+    font-size: 120%;
+}
+
+#half{
+    flex-grow: 1;
+}
+
+#max{
+    flex-grow: 1;
+}
+
+#minebuttoncontainer{
+    position: absolute;
+    z-index: 4;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 80%;
+    max-width: 350px;
+    display: flex;
+    gap: 5%;
+    right: 2%;
+}
+
+#minebuttoncontainer button{
+    background-color: #39406b;
+    border: none;
+    color: #545f8a;
+    border-radius: 3px;
+    height: 30px;
+    flex-shrink: 1;
+    flex-grow: 1;
+    font-size: 120%;
+    min-width: none;
+}
+
+#minebuttoncontainer button:hover, #betbuttoncontainer button:hover{
+    filter: brightness(.9);
+}
+#minebuttoncontainer button:active, #betbuttoncontainer button:active{
+    filter: brightness(.8);
+}
+
+#ask{
+    font-size: 200%;
+    background-color: #39406b;
+    border: none;
+    color: #545f8a;
+    height: 7%;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    position: absolute;
+    bottom: 2%;
+    left: 2%;
+}
+
+#description{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 75%;
+    background-color: #20274b;
+    z-index: 5;
+    max-width: 80%;
+    color: #545f8a;
+    display: none;
+    border-radius: 10px;
+    overflow-y: scroll;
+}
+
+#descriptionbackground{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.425);
+    left: 0;
+    top: 0;
+    z-index: 4;
+    display: none;
+}
+
+#close{
+    background-color: #39406b;
+    border: none;
+    color: #545f8a;
+    border-radius: 3px;
+    width: 30px;
+    height: 30px;
+    top: 3%;
+    right: 4%;
+    position: absolute;
+    font-size: 120%;
+    user-select: none;
+}
+
+button{cursor:pointer;}
+
+#tutorialtitle{
+    left: 50%;
+    position: relative;
+    transform: translateX(-50%);
+    font-size: clamp(0px, 8vw, 250%);
+    width: max-content;
+}
+
+#tutorialtext{
+    font-size: clamp(15px, 2.5vw, 25px);
+    width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+}
+
+#tutorialimg{
+    width: 500px;
+    max-width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    object-fit: cover;
+    transition: margin-left 0.2s, scale 0.2s;
+}
+
+#tutorialimg:hover{
+    scale: 1.14;
+    margin-left: 7%;
+}
 
 @media screen and (width< 1558px) {
     #moneyborder{
         top: 520px;
     }
-} 
+    .box{
+        border-radius: 6px;
+    }
+    #bombcontainer{
+        max-width: 78%;
+        max-height: 78%;
+    }
+    #imgcontainer{
+        max-width: 78%;
+        max-height: 78%;
+    }
 
+    #betbuttoncontainer button{
+        font-size: 15px;
+    }
+    #minebuttoncontainer button{
+        font-size: 15px;
+    }
+
+    #ask{
+        top: 2%;
+    }
+}
