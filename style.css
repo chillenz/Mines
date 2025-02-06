@@ -352,7 +352,7 @@ img {
 }
 
 #description{
-    position: fixed;
+    position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -365,6 +365,7 @@ img {
     display: none;
     border-radius: 10px;
     overflow-y: scroll;
+    scrollbar-width:none;
 }
 
 #descriptionbackground{
@@ -451,5 +452,8 @@ button{cursor:pointer;}
     }
     #ask{
         top: 2%;
+    }
+    #description{
+        position: fixed;
     }
 }
