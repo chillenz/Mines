@@ -300,6 +300,9 @@ function click(clicked, bomb, clickedbox){
         if (boxclickstatus[clicked]===false){
             if (alive===true){
                 if (boxbombstatus[bomb]===false){
+                    const safesound = new Audio('bloxflipsoundeffect.wav');
+                    safesound.volume = '0.8';
+                    safesound.play() 
                     startbutton.style.filter = 'brightness(1)';
                     startbutton.classList.add('placebeteffect');
                     boxclickstatus[clicked] = true;
@@ -326,8 +329,8 @@ function click(clicked, bomb, clickedbox){
                         input.readOnly = false;
                     });
                     earningamount.readOnly = true;
-                    const sound = new Audio('vineboom.mp3');
-                    sound.play();
+                    const bombsound = new Audio('vineboom.mp3');
+                    bombsound.play();
                     allbox.forEach(box => {
                         box.style.opacity = '0';
                     });
